@@ -28,7 +28,22 @@ def get_data():
     
     data_str = input("Enter name and shots here: ")
 
-    print(f'Name and shooting info is {data_str}')
+    shot_data = data_str.split(",")
+    validate_data(shot_data)
+
+
+def validate_data(values):
+    """
+    Inside the try statement, will verify the data given is in the proper form.
+    Will raise a ValueError if data is not in correct form, or given too many value's.
+    """
+    try:
+        if len(values) != 3:
+            raise ValueError(
+                f"Only name, shot's made and shot's attempted please,  your input was {values}")
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+
 
 
 get_data()
