@@ -5,7 +5,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -18,20 +18,30 @@ SHEET = GSPREAD_CLIENT.open('shooting_chart')
 
 # print(data)
 
+
 def get_data():
     """
-    Get name of player and shooting numbers to input from user
+    Get name of player and shooting data to input into spreadsheet
     """
-    print("Please enter name and shooting info")
-    print("Data should be name with shot's made and shot's attempted seperated by commas.")
-    print("Example: John Doe, 34, 50\n")
-    
-    data_str = input("Enter name and shots here: ")
+    print("Please enter name")
 
-    shot_data = data_str.split(",")
-    validate_data(shot_data)
+    name_str = input("Enter name of player: ")
+
+    name_data = name_str
+
+    print("Shot data should be two numbers, seperated by comma's.")
+    print("Example: 22, 54\n")
+    data_str = input("Enter shot data: ")
+
+    shot_data = data_str
+    print(f'{name_data} {data_str}')
 
 
+get_data()
+
+# validate_data(shot_data)
+
+'''
 def validate_data(values):
     """
     Inside the try statement, will verify the data given is in the proper form.
@@ -43,7 +53,4 @@ def validate_data(values):
                 f"Only name, shot's made and shot's attempted please,  your input was {values}")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
-
-
-
-get_data()
+'''
