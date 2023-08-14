@@ -23,34 +23,29 @@ def get_data():
     """
     Get name of player and shooting data to input into spreadsheet
     """
-    print("Please enter name")
+    while True:
+        name_input = input("Enter name of player: ")
+        if validate_name(name_input):
+            break
+        else:
+            print("Name should contain only letter's. Please try again.")
+            continue
 
-    name_str = input("Enter name of player: ")
+    # get_shots()
 
-    name_data = name_str
+    print(name_input)
+    # print(get_shots)
+    
+    # data = name_input # +data_str # will have other variable names for shots
+    # return data
 
-    print("Shot data should be two numbers, seperated by comma's.")
-    print("Example: 22, 54\n")
-    data_str = input("Enter shot data: ")
 
-    shot_data = data_str
-    print(f'{name_data} {data_str}')
+def validate_name(name_input):
+    """
+    Inside while loop, will verify name_data is a string.
+    Will raise a Error if name_data is not a string
+    """
+    return name_input.isalpha()
 
 
 get_data()
-
-# validate_data(shot_data)
-
-'''
-def validate_data(values):
-    """
-    Inside the try statement, will verify the data given is in the proper form.
-    Will raise a ValueError if data is not in correct form, or given too many value's.
-    """
-    try:
-        if len(values) != 3:
-            raise ValueError(
-                f"Only name, shot's made and shot's attempted please,  your input was {values}")
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
-'''
