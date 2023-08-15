@@ -22,24 +22,57 @@ def main_menu():
     """
 
     print("Main Menu")
+    print("Enter 1, 2 or 3 for option you would like to do: \n")
     print("--------------")
     print("1. Enter New Player and Shots")
-    print("2. Display Current Shots")
+    print("2. Update Current Player")
+    print("3. Display Current Shot's")
     print("--------------")
+    while True:
+        try:
+            option = int(input("Option: \n"))
+        except ValueError:
+            print("Not a valid Option, Enter 1 or 2.")
+            continue
+        if option == 1:
+            get_data()
+            break
+        elif option == 2:
+            get_name()
+            break
+
 
 
     # Enter new_data()
+
+    # Update current_player()
     
-    # Display current_data()
+    # Display current_menu
         
-        # All data
+        # Show all_data()
         
-        # Player data
+        # Show single_player
             
             # Enter players name 
 
-
 def get_name():
+    """
+    Get name of player and validate as a string.
+    """
+    while True:
+        name_input = input("Enter name of player: ")
+        if validate_name(name_input):
+            break
+        else:
+            print("Name should contain only letter's. Please try again.")
+            continue
+    
+    name = name_input
+
+    return name
+
+
+def get_data():
     """
     Get name of player and shooting data and validate each are correct type.
     """
