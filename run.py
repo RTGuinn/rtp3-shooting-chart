@@ -27,6 +27,7 @@ def main_menu():
     print("1. Enter New Player and Shot's")
     print("2. Update Current Player")
     print("3. Display Current Shot's")
+    print("4. Quit")
     print("---------------------")
     while True:
         option = int(input("Option: \n"))
@@ -44,6 +45,9 @@ def main_menu():
             break
         elif option == 3:
             current_menu()
+            break
+        elif option == 4:
+            exit()
             break
         else:
             print("Option is Invalid...")
