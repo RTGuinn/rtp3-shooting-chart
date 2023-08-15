@@ -23,23 +23,30 @@ def main_menu():
 
     print("Main Menu")
     print("Enter 1, 2 or 3 for option you would like to do: \n")
-    print("--------------")
-    print("1. Enter New Player and Shots")
+    print("---------------------")
+    print("1. Enter New Player and Shot's")
     print("2. Update Current Player")
     print("3. Display Current Shot's")
-    print("--------------")
+    print("---------------------")
     while True:
-        try:
-            option = int(input("Option: \n"))
-        except ValueError:
-            print("Not a valid Option, Enter 1 or 2.")
-            continue
+        option = int(input("Option: \n"))
         if option == 1:
             get_data()
+            # calculate_percentage()
+            # update_sheet()
+            # display_updated_sheet()
             break
         elif option == 2:
             get_name()
+            # calculate_percentage
+            # update_player()
+            # display_updated_player()
             break
+        elif option == 3:
+            current_menu()
+            break
+        else:
+            print("Option is Invalid...")
 
 
 
@@ -54,6 +61,44 @@ def main_menu():
         # Show single_player
             
             # Enter players name 
+
+def current_menu():
+    """
+    Display current shots meny options
+    """
+
+    print("What would you like to see? \n")
+    print("----------------")
+    print("0. Return to Main Menu")
+    print("1. All Player's Shot's")
+    print("2. Individual Player's Shot's")
+    print("3. Quit")
+    print("----------------")
+    while True:
+        try:
+            option = int(input("Option: \n"))
+        except ValueError:
+            print("Not a valid Option, Enter 1 or 2.")
+            continue
+        if option == 1:
+            # show_all_data()
+            break
+        elif option == 2:
+            get_name()
+            # show_single_player()
+            break
+        elif option == 3:
+            exit()
+            break
+        elif option == 0:
+            main_menu()
+            break
+        else:
+            print("Option is Invalid...")
+
+    # return current menu when functions are done
+    # current_menu()
+
 
 def get_name():
     """
