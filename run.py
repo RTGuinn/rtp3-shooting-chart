@@ -31,13 +31,37 @@ def get_data():
             print("Name should contain only letter's. Please try again.")
             continue
 
-    # get_shots()
 
-    print(name_input)
-    # print(get_shots)
+    shot_data = get_shots()
+    input_data = name_input, shot_data
     
-    # data = name_input # +data_str # will have other variable names for shots
-    # return data
+    return input_data
+    
+
+def get_shots():
+    """
+    Will have 2 while loops to get shot's made and attempted data.
+    Loops will validate data is an integer
+    """
+    while True:
+        shots_made = input("Enter number of shot's made: ")
+        if shots_made.isdigit():
+            shots_made = int(shots_made)
+            break
+        else:
+            print("Made shot's should be number's only, Please try again.")
+            continue
+
+    while True:
+        shots_attempted = input("Enter number of shot's attempted: ")
+        if shots_attempted.isdigit():
+            shots_attempted = int(shots_attempted)
+            break
+        else:
+            print("Attempted should be number's only, Please try again.")
+            continue
+
+    return shots_made, shots_attempted
 
 
 def validate_name(name_input):
