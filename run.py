@@ -13,7 +13,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('shooting_chart')
 
 
-# Menu function
+# Main Menu function
 def main_menu():
     """
     Displays Main Menu for user.
@@ -21,14 +21,14 @@ def main_menu():
     If input is invalid, shows error and ask for valid option.
     """
 
-    print("Main Menu")
-    print("Enter 1, 2 or 3 for option you would like to do: \n")
-    print("---------------------")
+    print("MAIN MENU")
+    print("Enter 1, 2, 3 or 4 for option you would like to do: \n")
+    print("*********************")
     print("1. Enter New Player and Shot's")
     print("2. Update Current Player")
     print("3. Display Current Shot's")
     print("4. Quit")
-    print("---------------------")
+    print("********************* \n")
     while True:
         option = int(input("Option: \n"))
         if option == 1:
@@ -38,7 +38,7 @@ def main_menu():
             # display_updated_sheet()
             break
         elif option == 2:
-            get_name()
+            get_data()
             # calculate_percentage
             # update_player()
             # display_updated_player()
@@ -52,32 +52,35 @@ def main_menu():
         else:
             print("Option is Invalid...")
 
-
-
     # Enter new_data()
 
     # Update current_player()
-    
+
     # Display current_menu
-        
+     
         # Show all_data()
-        
+
         # Show single_player
-            
-            # Enter players name 
+
+            # Enter players name
+
+
+def calculate_percentage():
+    
+
 
 def current_menu():
     """
     Display current shots meny options
     """
-
+    print("DISPLAY MENU")
     print("What would you like to see? \n")
-    print("----------------")
+    print("****************")
     print("0. Return to Main Menu")
     print("1. All Player's Shot's")
     print("2. Individual Player's Shot's")
     print("3. Quit")
-    print("----------------")
+    print("****************")
     while True:
         try:
             option = int(input("Option: \n"))
@@ -115,7 +118,7 @@ def get_name():
         else:
             print("Name should contain only letter's. Please try again.")
             continue
-    
+
     name = name_input
 
     return name
@@ -133,10 +136,9 @@ def get_data():
             print("Name should contain only letter's. Please try again.")
             continue
 
-
     shot_data = get_shots()
     input_data = name_input, shot_data
-    
+
     return input_data
 
 
@@ -145,7 +147,8 @@ def validate_name(name_input):
     Inside while loop, will verify name_data is a string.
     Will raise a Error if name_data is not a string
     """
-    return name_input.isalpha()
+    if all(name.isalpha() or name.isspace() for name in name_input):
+        return name_input
 
 
 def get_shots():
@@ -172,6 +175,14 @@ def get_shots():
             continue
 
     return shots_made, shots_attempted
+
+
+def calculate_percentage():
+    """
+    Takes shots made and shots attempted to calculate a percentage.
+    Percentage will be used for new player statistics or to 
+    update a current player.
+    """
 
 
 print("Welcome To Shooting Spreadsheet")
