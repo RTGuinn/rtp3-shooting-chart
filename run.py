@@ -170,6 +170,14 @@ def get_shots():
     return shots_made, shots_attempted
 
 
+def update_chart(input_data):
+    """
+    Update shooting chart with input data from user for new player.
+
+    """
+    
+
+
 def calculate_percentage(shots_made, shots_attempted):
     """
     Takes shots made and shots attempted to calculate a percentage.
