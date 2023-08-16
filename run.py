@@ -33,7 +33,6 @@ def main_menu():
         option = int(input("Option: \n"))
         if option == 1:
             get_data()
-            # calculate_percentage()
             # update_sheet()
             # display_updated_sheet()
             break
@@ -48,7 +47,6 @@ def main_menu():
             break
         elif option == 4:
             exit()
-            break
         else:
             print("Option is Invalid...")
 
@@ -57,16 +55,12 @@ def main_menu():
     # Update current_player()
 
     # Display current_menu
-     
+
         # Show all_data()
 
         # Show single_player
 
             # Enter players name
-
-
-def calculate_percentage():
-    
 
 
 def current_menu():
@@ -96,7 +90,6 @@ def current_menu():
             break
         elif option == 3:
             exit()
-            break
         elif option == 0:
             main_menu()
             break
@@ -177,13 +170,24 @@ def get_shots():
     return shots_made, shots_attempted
 
 
-def calculate_percentage():
+def calculate_percentage(shots_made, shots_attempted):
     """
     Takes shots made and shots attempted to calculate a percentage.
-    Percentage will be used for new player statistics or to 
+    Percentage will be used for new player statistics or to
     update a current player.
     """
+    print("Calulating shooting percentage...")
+    percent = (shots_made / shots_attempted) * 100
+
+    return percent
 
 
-print("Welcome To Shooting Spreadsheet")
-main_menu()
+def main():
+    """
+    Run all functions
+    """
+    main_menu()
+
+
+print("Welcome To Shooting Spreadsheet \n")
+main()
