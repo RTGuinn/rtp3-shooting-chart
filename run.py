@@ -13,6 +13,14 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('shooting_chart')
 
 
+chart = SHEET.worksheet('shots')
+
+chart_data = chart.get_all_values()
+
+print(chart_data)
+
+
+'''
 # Main Menu function
 def main_menu():
     """
@@ -175,7 +183,13 @@ def update_chart(input_data):
     Update shooting chart with input data from user for new player.
 
     """
-    
+    print("Updating Shooting Chart...\n")
+    shooting_chart = SHEET.worksheet("shots")
+    shooting_chart.append_row(input_data)
+    print("Shooting Chart successfully updated!\n")
+
+
+    input_data = update_chart()
 
 
 def calculate_percentage(shots_made, shots_attempted):
@@ -199,3 +213,4 @@ def main():
 
 print("Welcome To Shooting Spreadsheet \n")
 main()
+'''
