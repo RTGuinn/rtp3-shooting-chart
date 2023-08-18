@@ -13,11 +13,137 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('shooting_chart')
 
 
-chart = SHEET.worksheet('shots')
+# chart = SHEET.worksheet('shots')
+# chart_data = chart.get_all_values()
+# print(chart_data)
 
-chart_data = chart.get_all_values()
 
-print(chart_data)
+def main_menu():
+    """
+    Displays Main Menu for user.
+    Gives options to user and calls next function accordingly.
+    If input is invalid, shows error and ask for valid option.
+    """
+
+    print("MAIN MENU")
+    print("Enter 1, 2, 3 or 4 for option you would like to do: \n")
+    print("*********************")
+    print("1. Enter New Player and Shot's")
+    print("2. Update Current Player")
+    print("3. Display Current Shooting Chart")
+    print("4. Quit")
+    print("********************* \n")
+    while True:
+        option = int(input("Option: \n"))
+        if option == 1:
+            get_data()
+            # update_sheet()
+            # display_updated_sheet()
+            break
+        elif option == 2:
+            get_data()
+            # calculate_percentage
+            # update_player()
+            # display_updated_player()
+            break
+        elif option == 3:
+            # current_menu()
+            break
+        elif option == 4:
+            exit()
+        else:
+            print("Option is Invalid...")
+
+
+def get_name():
+    """
+    Get name of player and validate as a string.
+    """
+    while True:
+        name_input = input("Enter name of player: ")
+        if validate_name(name_input):
+            break
+        else:
+            print("Name should contain only letter's. Please try again. \n")
+            continue
+
+    # name = name_input
+
+
+def get_data():
+    """
+    Get name of player and shooting data and validate each are correct type.
+    Add data with shooting chart data and calculate percentage and update
+    shooting chart with new data input.
+    """
+    input_data = []
+    while True:
+        name_input = input("Enter name of player: ")
+        if validate_name(name_input):
+            input_data.append(name_input)
+            break
+        else:
+            print("Name should contain only letter's. Please try again.")
+            continue
+
+    shooting_data = get_shots()
+    input_data.extend(shooting_data)
+
+    print(input_data)
+
+    # update_shooting_chart(shots)
+
+
+def get_shots():
+    """
+    Uses 2 while loops to get shot's made and attempted data.
+    Loops will validate data is an integer
+    """
+    shot_data = []
+    while True:
+        shots_made = input("Enter number of shot's made: ")
+        if shots_made.isdigit():
+            shots_made = int(shots_made)
+            shot_data.append(shots_made)
+            break
+        else:
+            print("Made shot's should be number's only, Please try again.")
+            continue
+
+    while True:
+        shots_attempted = input("Enter number of shot's attempted: ")
+        if shots_attempted.isdigit():
+            shots_attempted = int(shots_attempted)
+            shot_data.append(shots_attempted)
+            break
+        else:
+            print("Attempted should be number's only, Please try again.")
+            continue
+
+    return shot_data
+
+
+def validate_name(name_input):
+    """
+    Inside while loop, will verify name_data is a string.
+    Will raise a Error if name_data is not a string
+    """
+    if all(name.isalpha() or name.isspace() for name in name_input):
+        return name_input
+
+
+def update_shooting_chart(input_data):
+    """
+    Update shooting chart with input data from user for new player.
+
+    """
+    print("Updating Shooting Chart...\n")
+    shooting_chart = SHEET.worksheet("shots")
+    shooting_chart.append_row(input_data)
+    print("Shooting Chart successfully updated!\n")
+
+
+main_menu()
 
 
 '''
@@ -121,8 +247,6 @@ def get_name():
             continue
 
     name = name_input
-
-    return name
 
 
 def get_data():
