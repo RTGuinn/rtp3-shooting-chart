@@ -89,9 +89,9 @@ def get_data():
     shooting_data = get_shots()
     input_data.extend(shooting_data)
 
-    print(input_data)
+    update_shooting_chart(input_data)
 
-    # update_shooting_chart(shots)
+    return input_data
 
 
 def get_shots():
