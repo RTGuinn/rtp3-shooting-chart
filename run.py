@@ -41,7 +41,7 @@ def main_menu():
             # display_updated_sheet()
             break
         elif option == 2:
-            get_data()
+            # get_update_data()
             # calculate_percentage
             # update_player()
             # display_updated_player()
@@ -89,8 +89,11 @@ def get_data():
     shooting_data = get_shots()
     input_data.extend(shooting_data)
 
-    update_shooting_chart(input_data)
+    ###################
 
+    # update_shooting_chart(input_data)
+    
+    # main_menu()
     return input_data
 
 
@@ -143,7 +146,27 @@ def update_shooting_chart(input_data):
     print("Shooting Chart successfully updated!\n")
 
 
-main_menu()
+def calculate_percentage(shots_made, shots_attempted):
+    """
+    Takes shots made and shots attempted to calculate a percentage.
+    Percentage will be used for new player statistics or to
+    update a current player.
+    """
+    print("Calulating shooting percentage...")
+    # percent = (shots_made / shots_attempted) * 100
+
+    return percent
+
+
+def main():
+    """
+    Run all functions
+    """
+    main_menu()
+
+
+print("Welcome To Shooting Spreadsheet \n")
+main()
 
 
 '''
