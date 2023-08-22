@@ -88,10 +88,7 @@ def get_data():
 
     shooting_data = get_shots()
     input_data.extend(shooting_data)
-
-    ###################
-
-    # update_shooting_chart(input_data)
+    update_shooting_chart(input_data)
     
     # main_menu()
     return input_data
@@ -122,6 +119,8 @@ def get_shots():
         else:
             print("Attempted should be number's only, Please try again.")
             continue
+    percent = calculate_percentage(shots_made, shots_attempted)
+    shot_data.append(percent)
 
     return shot_data
 
@@ -153,7 +152,7 @@ def calculate_percentage(shots_made, shots_attempted):
     update a current player.
     """
     print("Calulating shooting percentage...")
-    # percent = (shots_made / shots_attempted) * 100
+    percent = round((shots_made / shots_attempted) * 100, 2)
 
     return percent
 
